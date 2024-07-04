@@ -4,7 +4,7 @@ hardened-malloc for Ragnarok
 GrapheneOS' hardened memory allocator. This package provides the prebuilt
 libraries for systems that do not have a compiler, as well as the source
 tarball (saved to /usr/src/) which can be used to compile the library using
-the --mach=native option.
+the --march=native option.
 On a Ragnarok system, the firstboot init script will detect if a compiler is
 installed and rebuild automatically.
 
