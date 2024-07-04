@@ -12,18 +12,12 @@ Config divergence from upstream
 * Ragnarok uses three config variants:
 	* `Strong`: same as upstream's [default](https://github.com/GrapheneOS/hardened_malloc/blob/main/config/default.mk) variant.
 	* `Light`: same as upstream's [light](https://github.com/GrapheneOS/hardened_malloc/blob/main/config/light.mk) variant.
-	* `Medium`: middle ground between `strong` and `light`. Built on the light variant, but sets __CONFIG_WRITE_AFTER_FREE_CHECK__ and __CONFIG_SLOT_RANDOMIZE__ to _true_, like in the `strong` variant. This is the default used by Ragnarok.
+	* `Medium`: middle ground between `strong` and `light`. Built on the light variant, but sets __CONFIG_WRITE_AFTER_FREE_CHECK__ and __CONFIG_SLOT_RANDOMIZE__ to _true_, like in the `strong` variant.
 
 Ragnarok's implementation
 -------------------------
 
-The `ld.so.preload` trick is used to make hardened_malloc supersede glibc's malloc.
-`/usr/lib/libhardened_malloc.so`, which points to `/usr/lib/hardedned_malloc/libhardened_malloc-medium.so`,
-is added to `/etc/ld.so.preload`.
-
-The default variant used can be changed by modifying the symlink, e.g.
-
-	ln -sf /usr/lib/hardened_malloc/libhardened_malloc-strong.so /usr/lib/libhardened_malloc.so
+Soon...
 
 -------------
 
