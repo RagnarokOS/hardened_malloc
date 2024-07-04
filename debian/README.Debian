@@ -1,10 +1,11 @@
-hardened-malloc for Debian
--------------------------
+hardened-malloc for Ragnarok
+----------------------------
 
-GrapheneOS' hardened memory allocator. This package provides the source code and
-a post-install script which will compile all three variants in order to take
-advantage of the --march=native option. On Ragnarok, hardened_malloc will be
-enabled by default at system installed time. Otherwise, enabling/starting the
-init script will enable it.
+GrapheneOS' hardened memory allocator. This package provides the prebuilt
+libraries for systems that do not have a compiler, as well as the source
+tarball (saved to /usr/src/) which can be used to compile the library using
+the --mach=native option.
+On a Ragnarok system, the firstboot init script will detect if a compiler is
+installed and rebuild automatically.
 
- -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Mon, 11 Dec 2023 14:26:18 -0500
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Thu, 04 Jul 2024 16:00:29 -0400
