@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Create a tarball of hardened_malloc's source
+# $Ragnarok: createtarball,v 1.1 2024/07/12 15:40:24 lecorbeau Exp $
+
+/usr/bin/tar czvf hardened_malloc.tgz .
+/usr/bin/mkdir -p debian/usr/src
+/usr/bin/mv hardened_malloc.tgz debian/usr/src
