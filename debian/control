@@ -1,4 +1,4 @@
-Source: hardened-malloc
+Source: hardened_malloc
 Section: libs
 Priority: optional
 Maintainer: Ian LeCorbeau <I-LeCorbeau@protonmail.com>
@@ -7,7 +7,7 @@ Standards-Version: 4.5.1
 Homepage: https://github.com/I-LeCorbeau/hardened-malloc
 Rules-Requires-Root: no
 
-Package: hardened-malloc
+Package: hardened_malloc
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: GrapheneOS' hardened_malloc

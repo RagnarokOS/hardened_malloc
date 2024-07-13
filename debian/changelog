@@ -1,4 +1,4 @@
-hardened-malloc (11-1-ragnarok01) stable; urgency=medium
+hardened_malloc (11-1-ragnarok01) stable; urgency=medium
 
   * ragnarok01 build
 

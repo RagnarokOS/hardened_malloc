@@ -1,5 +1,5 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: hardened-malloc
+Upstream-Name: hardened_malloc
 
 Files: *
 Copyright: 2018-2022 GrapheneOS
@@ -23,7 +23,7 @@ License: MIT
  THE SOFTWARE.
 
 Files: debian/*
-Copyright: 2023 Ian LeCorbeau <I-LeCorbeau@protonmail.com>
+Copyright: 2023-2024 Ian LeCorbeau <I-LeCorbeau@protonmail.com>
 License: MIT
  Permission is hereby granted, free of charge, to any person obtaining
  a copy of this software and associated documentation files (the "Software"),
