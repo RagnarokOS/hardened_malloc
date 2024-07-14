@@ -10,6 +10,7 @@ export DH_VERBOSE = 1
 	dh $@
 
 override_dh_auto_build:
+	debian/createtarball
 	dh_auto_build -- CONFIG_NATIVE=false
 	dh_auto_build -- VARIANT=medium CONFIG_NATIVE=false
 	dh_auto_build -- VARIANT=light CONFIG_NATIVE=false
