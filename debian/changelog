@@ -1,5 +1,5 @@
-hardened_malloc (11-1-ragnarok01) stable; urgency=medium
+hardened-malloc (11) stable; urgency=medium
 
   * ragnarok01 build
 
- -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Thu, 20 Jul 2023 14:54:21 -0400
+ -- Ian LeCorbeau <I-LeCorbeau@protonmail.com>  Thu, 18 Jul 2024 19:03:21 -0400
