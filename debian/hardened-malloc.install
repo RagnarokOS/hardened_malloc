@@ -1,2 +1,3 @@
-debian/etc/*					/etc
+debian/etc/default/hardened_malloc		/etc/default
+debian/etc/init.d/hardened_malloc		/etc/init.d
 debian/usr/src/*				/usr/src
