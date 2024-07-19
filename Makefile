@@ -136,9 +136,9 @@ install:
 	install -d ${DESTDIR}/usr/lib/hardened_malloc
 	install out-strong/libhardened_malloc-strong.so \
 		${DESTDIR}/usr/lib/hardened_malloc
-	install out-strong/libhardened_malloc-medium.so \
+	install out-medium/libhardened_malloc-medium.so \
 		${DESTDIR}/usr/lib/hardened_malloc
-	install out-strong/libhardened_malloc-light.so \
+	install out-light/libhardened_malloc-light.so \
 		${DESTDIR}/usr/lib/hardened_malloc
 
 check: tidy
