@@ -15,13 +15,14 @@ endif
 OUT := out$(SUFFIX)
 
 define safe_flag
-$(shell $(CC) $(if $(filter clang,$(CC)),-Werror=unknown-warning-option) -E $1 - </dev/null >/dev/null 2>&1 && echo $1 || echo $2)
+$(shell $(CC) $(if $(filter clang%,$(CC)),-Werror=unknown-warning-option) -E $1 - </dev/null >/dev/null 2>&1 && echo $1 || echo $2)
 endef
 
 CPPFLAGS := $(CPPFLAGS) -D_GNU_SOURCE -I include
 SHARED_FLAGS := -pipe -O3 -flto -fPIC -fvisibility=hidden -fno-plt \
     -fstack-clash-protection $(call safe_flag,-fcf-protection) -fstack-protector-strong \
-    -Wall -Wextra $(call safe_flag,-Wcast-align=strict,-Wcast-align) -Wcast-qual -Wwrite-strings
+    -Wall -Wextra $(call safe_flag,-Wcast-align=strict,-Wcast-align) -Wcast-qual -Wwrite-strings \
+    -Wundef
 
 ifeq ($(CONFIG_WERROR),true)
     SHARED_FLAGS += -Werror
@@ -35,7 +36,7 @@ ifeq ($(CONFIG_UBSAN),true)
     SHARED_FLAGS += -fsanitize=undefined -fno-sanitize-recover=undefined
 endif
 
-CFLAGS := $(CFLAGS) -std=c17 $(SHARED_FLAGS) -Wmissing-prototypes
+CFLAGS := $(CFLAGS) -std=c17 $(SHARED_FLAGS) -Wmissing-prototypes -Wstrict-prototypes
 CXXFLAGS := $(CXXFLAGS) -std=c++17 -fsized-deallocation $(SHARED_FLAGS)
 LDFLAGS := $(LDFLAGS) -Wl,-O1,--as-needed,-z,defs,-z,relro,-z,now,-z,nodlopen,-z,text
 

@@ -80,7 +80,7 @@ static union {
     char padding[PAGE_SIZE];
 } ro __attribute__((aligned(PAGE_SIZE)));
 
-static inline void *get_slab_region_end() {
+static inline void *get_slab_region_end(void) {
     return atomic_load_explicit(&ro.slab_region_end, memory_order_acquire);
 }
 
@@ -1493,7 +1493,7 @@ EXPORT void *h_realloc(void *old, size_t size) {
         }
     }
 
-    void *new = allocate(thread_arena, size);
+    void *new = allocate(init(), size);
     if (new == NULL) {
         thread_seal_metadata();
         return NULL;
@@ -1808,24 +1808,18 @@ EXPORT int h_malloc_trim(UNUSED size_t pad) {
 
 EXPORT void h_malloc_stats(void) {}
 
+#if defined(__GLIBC__) || defined(__ANDROID__)
 // glibc mallinfo is broken and replaced with mallinfo2
 #if defined(__GLIBC__)
 EXPORT struct mallinfo h_mallinfo(void) {
     return (struct mallinfo){0};
 }
 
-#if __GLIBC_PREREQ(2, 33)
-#define HAVE_MALLINFO2
-#endif
-#endif
-
-#if defined(HAVE_MALLINFO2) || defined(__ANDROID__)
-#ifndef __GLIBC__
-EXPORT struct mallinfo h_mallinfo(void) {
-    struct mallinfo info = {0};
-#else
 EXPORT struct mallinfo2 h_mallinfo2(void) {
     struct mallinfo2 info = {0};
+#else
+EXPORT struct mallinfo h_mallinfo(void) {
+    struct mallinfo info = {0};
 #endif
 
 #if CONFIG_STATS
