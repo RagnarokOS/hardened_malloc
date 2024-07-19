@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# hardened_malloc postinstall script
+# $Ragnarok: postinst,v 1.1 2024/07/19 15:28:00 lecorbeau Exp $
+
+set -e
+
+ln -sf /usr/lib/hardened_malloc/libhardened_malloc-light.so /usr/lib/libhardened_malloc.so
