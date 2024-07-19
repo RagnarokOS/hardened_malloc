@@ -133,12 +133,12 @@ $(OUT)/util.o: util.c util.h $(CONFIG_FILE) | $(OUT)
 	$(COMPILE.c) $(OUTPUT_OPTION) $<
 
 install:
-	install -d -m 755 -g 0 -o root ${DESTDIR}/usr/lib/hardened_malloc
-	install -m 755 -g 0 -o root out-strong/libhardened_malloc-strong.so \
+	install -d ${DESTDIR}/usr/lib/hardened_malloc
+	install out-strong/libhardened_malloc-strong.so \
 		${DESTDIR}/usr/lib/hardened_malloc
-	install -m 755 -g 0 -o root out-strong/libhardened_malloc-medium.so \
+	install out-strong/libhardened_malloc-medium.so \
 		${DESTDIR}/usr/lib/hardened_malloc
-	install -m 755 -g 0 -o root out-strong/libhardened_malloc-light.so \
+	install out-strong/libhardened_malloc-light.so \
 		${DESTDIR}/usr/lib/hardened_malloc
 
 check: tidy

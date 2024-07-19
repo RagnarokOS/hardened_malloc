@@ -1,8 +1,15 @@
 #!/bin/sh
 
 # hardened_malloc postinstall script
-# $Ragnarok: postinst,v 1.1 2024/07/19 15:28:00 lecorbeau Exp $
+# $Ragnarok: postinst,v 1.2 2024/07/19 17:26:37 lecorbeau Exp $
 
 set -e
 
+# Taking care of permissions because this has been flaky in the past.
+/usr/bin/chmod 755 /usr/lib/hardened_malloc
+/usr/bin/chmod 755 /usr/lib/hardened_malloc/libhardened_malloc-light.so
+/usr/bin/chmod 755 /usr/lib/hardened_malloc/libhardened_malloc-medium.so
+/usr/bin/chmod 755 /usr/lib/hardened_malloc/libhardened_malloc-strong.so
+
+# Symlinking light to libhardened_malloc.so
 ln -sf /usr/lib/hardened_malloc/libhardened_malloc-light.so /usr/lib/libhardened_malloc.so
