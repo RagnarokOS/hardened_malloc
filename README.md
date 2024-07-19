@@ -1,3 +1,26 @@
+Hardened_malloc
+===============
+
+[GrapheneOS](https://github.com/GrapheneOS/hardened_malloc)' hardened memory allocator.
+
+This is only relevant to build the deb package for Ragnarok. There is no code divergence
+from upstream, only an extra configuration.
+
+Config divergence from upstream
+-------------------------------
+
+* Ragnarok uses three config variants:
+	* `Strong`: same as upstream's [default](https://github.com/GrapheneOS/hardened_malloc/blob/main/config/default.mk) variant.
+	* `Light`: same as upstream's [light](https://github.com/GrapheneOS/hardened_malloc/blob/main/config/light.mk) variant.
+	* `Medium`: middle ground between `strong` and `light`. Built on the light variant, but sets __CONFIG_WRITE_AFTER_FREE_CHECK__ and __CONFIG_SLOT_RANDOMIZE__ to _true_, like in the `strong` variant.
+
+Ragnarok's implementation
+-------------------------
+
+Soon...
+
+-------------
+
 # Hardened malloc
 
 * [Introduction](#introduction)
