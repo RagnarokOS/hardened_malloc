@@ -17,7 +17,23 @@ Config divergence from upstream
 Ragnarok's implementation
 -------------------------
 
-Soon...
+The `.deb` package provides the precompiled version of all three variants
+as well as the source code saved to `/usr/src/`. After system installation,
+the [firstboot](https://github.com/RagnarokOS/src/blob/master/base/etc/init.d/firstboot)
+init script will recompile the library with the default `march=native`
+option if `clang` is detected.
+
+`/usr/lib/libhardened_malloc.so` is symlinked to one of the variants located
+in `/usr/lib/hardened_malloc/`. The default variant (light) can be changed
+in `/etc/default/hardened_malloc`.
+
+The /etc/ld.so.preload trick is used to have hardened_malloc supersede
+the system's default libc implementation. The library is enabled at
+boot time with an
+[init script](https://github.com/RagnarokOS/hardened_malloc/blob/master/debian/etc/init.d/hardened_malloc)
+and disabled on poweroff/reboot. This is done to avoid a bug with
+live systems which prevents the system from fully initializing if
+hardened_malloc is already enabled.
 
 -------------
 
